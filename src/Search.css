@@ -1,0 +1,30 @@
+.Search {
+  border-bottom: 1px solid #f9f7fe;
+  padding-bottom: 30px;
+}
+.search-form {
+  display: flex;
+  justify-content: space-around;
+  /*flex-direction: column;*/
+  align-items: center;
+}
+.search-button {
+  margin-left: 15px;
+  font-size: 16px;
+  background-color: #885df1;
+  color: white;
+  border: none;
+  padding: 20px;
+  line-height: 1;
+  border-radius: 5px;
+}
+.search-input {
+  margin-left: 20px;
+  background-color: #f9f7fe;
+  border: none;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  padding: 20px;
+  width: 75%;
+  border-radius: 6px;
+}

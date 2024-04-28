@@ -1,0 +1,7 @@
+.WeatherForecast {
+  display: flex;
+  justify-content: space-around;
+}
+.temperature {
+  margin-top: 5px;
+}

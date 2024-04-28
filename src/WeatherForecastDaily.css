@@ -1,0 +1,15 @@
+.WeatherForecastDaily {
+  text-align: center;
+  margin-top: 5px;
+}
+.day,
+.temperature {
+  color: rgba(39, 33, 66, 0.6);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+.day {
+  margin-bottom: 5px;
+}
