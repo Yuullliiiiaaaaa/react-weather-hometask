@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 
 import "./Search.css";
@@ -14,17 +14,20 @@ export default function Search() {
   const [formattedDay, setFormattedDay] = useState("");
   const [cityToShow, setCityToShow] = useState("Kiev");
   const apiKey = "820385at7d928f3622bfd9b464oa0468";
-  let date = new Date();
+  const date = useMemo(() => new Date(), []);
 
-  const weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const weekdays = useMemo(
+    () => [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    []
+  );
 
   useEffect(() => {
     let currentDayIndex = date.getDay();
@@ -35,7 +38,7 @@ export default function Search() {
     setReorderedWeekdays(reorderWeekdays);
     let day = date.getDay();
     setFormattedDay(weekdays[day]);
-  }, [date]);
+  }, [date, weekdays]);
 
   function submitHandler(event) {
     setCityToSearch(city);
