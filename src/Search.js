@@ -69,19 +69,17 @@ export default function Search() {
 
   return (
     <div className="Search">
-      {response && (
-        <form id="search-form" className="search-form" onSubmit={submitHandler}>
-          <input
-            type="search"
-            placeholder="Enter a city.."
-            required
-            className="search-input"
-            id="search-input"
-            onChange={inputChangeCity}
-          />
-          <input type="submit" value="Search" className="search-button" />
-        </form>
-      )}
+      <form id="search-form" className="search-form" onSubmit={submitHandler}>
+        <input
+          type="search"
+          placeholder="Enter a city.."
+          required
+          className="search-input"
+          id="search-input"
+          onChange={inputChangeCity}
+        />
+        <input type="submit" value="Search" className="search-button" />
+      </form>
       {response && (
         <CurrentWeather
           response={response}
@@ -90,8 +88,10 @@ export default function Search() {
           city={cityToShow}
         />
       )}
-      {response && (
+      {response ? (
         <WeatherForecast city={cityToSearch} weekDays={reorderedWeekdays} />
+      ) : (
+        "Loading data..."
       )}
     </div>
   );

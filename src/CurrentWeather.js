@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./CurrentWeather.css";
-import AnimatedIcon from "./AnimatedIcon";
+import CurrentTemperature from "./CurrentTemperature";
 
 export default function CurrentWeather(props) {
   function formatDate() {
@@ -38,17 +38,8 @@ export default function CurrentWeather(props) {
             {<strong id="wind">{props.response.data.wind.speed}km/h</strong>}
           </p>
         </div>
-        <div className="current-temperature">
-          <span id="icon">
-            <AnimatedIcon icon={props.response.data.condition.icon} size="80" />
-          </span>
-          <span className="current-temperature-value" id="current-temperature">
-            {Math.round(props.response.data.temperature.current)}
-          </span>
-          <span className="current-temperature-unit">°C</span>
-        </div>
+        <CurrentTemperature response={props.response} />
       </div>
-      <div className="weather-forecast" id="forecast"></div>
     </div>
   );
 }
