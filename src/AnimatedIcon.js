@@ -5,6 +5,7 @@ import "./AnimatedIcon.css";
 
 export default function AnimatedIcon(props) {
   const [icon, setIcon] = useState(null);
+  const [isEffectComplete, setIsEffectComplete] = useState(false);
 
   useEffect(() => {
     const iconMappings = {
@@ -30,12 +31,20 @@ export default function AnimatedIcon(props) {
 
     if (props.icon in iconMappings) {
       setIcon(iconMappings[props.icon]);
+      setIsEffectComplete(true);
     } else {
       console.warn(`Unknown icon: ${props.icon}`);
     }
   }, [props.icon]);
 
   return (
-    <ReactAnimatedWeather size={props.size} icon={icon} color="black" animate />
+    isEffectComplete && (
+      <ReactAnimatedWeather
+        size={parseInt(props.size, 10)}
+        icon={icon}
+        color="black"
+        animate
+      />
+    )
   );
 }

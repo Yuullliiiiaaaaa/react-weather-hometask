@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./CurrentWeather.css";
 import CurrentTemperature from "./CurrentTemperature";
 
 export default function CurrentWeather(props) {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 15000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   function formatDate() {
-    let minutes = props.date.getMinutes();
-    let hours = props.date.getHours();
+    let date = currentTime;
+    let minutes = date.getMinutes();
+    let hours = date.getHours();
     let day = props.day;
     if (minutes < 10) {
       minutes = `0${minutes}`;
@@ -14,6 +25,7 @@ export default function CurrentWeather(props) {
     if (hours < 10) {
       hours = `0${hours}`;
     }
+    console.log("Time update");
     return `${day} ${hours}:${minutes}`;
   }
 
